@@ -63,6 +63,8 @@ h3 {
 }
 
 ul.subject-list {
+    list-style: none;
+
     .course-info {
         padding-left: 40px;
         margin-bottom: 10px;
@@ -76,6 +78,26 @@ ul.subject-list {
     li > h4 {
         margin-bottom: 0px;
     } 
+    
+    li {
+        padding-left: 2em;
+    }
+
+    li.collapsed:before,
+    li.uncollapsed:before {
+        width: 1em !important;
+        margin-left: -2em;
+        display: inline-block;
+        float: left;
+    }
+
+    li.uncollapsed:before {
+        content: '▼';
+    }
+
+    li.collapsed:before {
+        content: '▶';
+    }
 
     > li {
         margin-bottom: 15px;

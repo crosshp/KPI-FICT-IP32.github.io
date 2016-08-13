@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <div class="home">
 
     <h1 class="page-heading">Дописи</h1>
@@ -20,7 +19,7 @@ layout: default
         <h3 class="page-heading">{{semester.title}}</h3>
         <ul class="subject-list">
             {% for course in semester.courses %}
-            <li>
+            <li id='subject-{{ course.category }}' class="collapsed" onclick="collapse('{{ course.category }}')">
                 <h4>{{ course.title }}</h4>
                 <div class='course-info'>
                     {% if course.teacher %}
@@ -30,7 +29,7 @@ layout: default
                     <span class='assistant-name'>Практик: {{ course.assistant }}</span>
                     {% endif %}
                 </div>
-                <ul>
+                <ul class='posts-list' id='subject-{{ course.category }}-posts' style="display: none">
                 {% assign posts = (site.categories[course.category] | reverse) %}
                 {% for post in posts %}
                     <li><a href="{{ post.url }}">{{ post.title }}</a></li> 
