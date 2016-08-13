@@ -1,19 +1,20 @@
 function collapse (element_id) {
 	var element = document.getElementById('subject-'+element_id);
-	var postsList = $('#subject-'+element_id+'-posts');
+	var postsList = document.getElementById('subject-'+element_id+'-posts');
 
 	var margin = postsList.scrollHeight;
 
-	if(!('collapsed' in element)) {
-		element.collapsed = false;
-	}
+	if(postsList.classList.contains('collapsed') === true) {
+		postsList.classList.remove('collapsed');
+		element.classList.remove('collapsed');
 
-	if(element.collapsed === true) {
-		element.setAttribute('class', 'collapsed');
-		postsList.slideUp();
+		element.classList.add('uncollapsed');
 	} else {
-		element.setAttribute('class', 'uncollapsed');
-		postsList.slideDown();
+		element.classList.remove('uncollapsed');
+		
+		postsList.classList.add('collapsed');
+		element.classList.add('collapsed');
+		
+		postsList.style.marginTop = null;
 	}
-	element.collapsed = !element.collapsed;
 }

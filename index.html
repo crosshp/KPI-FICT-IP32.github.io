@@ -19,7 +19,7 @@ layout: default
         <h3 class="page-heading">{{semester.title}}</h3>
         <ul class="subject-list">
             {% for course in semester.courses %}
-            <li id='subject-{{ course.category }}' class="collapsed" onclick="collapse('{{ course.category }}')">
+            <li id='subject-{{ course.category }}' class="collapsable collapsed" onclick="collapse('{{ course.category }}')">
                 <h4>{{ course.title }}</h4>
                 <div class='course-info'>
                     {% if course.teacher %}
@@ -29,12 +29,14 @@ layout: default
                     <span class='assistant-name'>Практик: {{ course.assistant }}</span>
                     {% endif %}
                 </div>
-                <ul class='posts-list' id='subject-{{ course.category }}-posts' style="display: none">
-                {% assign posts = (site.categories[course.category] | reverse) %}
-                {% for post in posts %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li> 
-                {% endfor %}
-                </ul>
+                <div style="overflow: hidden; position: relative">
+                    <ul class='posts-list collapsed' id='subject-{{ course.category }}-posts'>
+                    {% assign posts = (site.categories[course.category] | reverse) %}
+                    {% for post in posts %}
+                        <li><a href="{{ post.url }}">{{ post.title }}</a></li> 
+                    {% endfor %}
+                    </ul>
+                </div>
             </li>
             {% endfor %}
         </ul>
@@ -42,5 +44,6 @@ layout: default
     </div>
 
     <p class="rss-subscribe">Підписатися на <a href="{{ "/feed.xml" | prepend: site.baseurl }}">оновлення RSS</a></p>
+    {% include scripts.html %}
 
 </div>

@@ -74,6 +74,14 @@ ul.subject-list {
         font-size: 12px;
         color: $mid-grey;
     } 
+    
+    ul.posts-list {
+      transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+    }
+    ul.posts-list.collapsed {
+      margin-top: -100%;
+    }
 
     li > h4 {
         margin-bottom: 0px;
@@ -83,8 +91,8 @@ ul.subject-list {
         padding-left: 2em;
     }
 
-    li.collapsed:before,
-    li.uncollapsed:before {
+    li.collapsable.collapsed:before,
+    li.collapsable.uncollapsed:before {
         width: 1em !important;
         margin-left: -2em;
         display: inline-block;
